@@ -14,7 +14,7 @@ class OneScreenApp extends StatelessWidget {
       brightness: Brightness.light,
     );
     return MaterialApp(
-      title: 'binaryRunnerAndroid',
+      title: 'Binary Runner',
       debugShowCheckedModeBanner: false,
       home: const OneScreen(),
       theme: ThemeData(
@@ -82,6 +82,7 @@ class _OneScreenState extends State<OneScreen> {
   String _stderr = '';
   int? _exitCode;
   bool _useSu = false;
+  String? _lastCommand;
 
   static const _channel = MethodChannel('com.example.binaryrunner/runner');
 
@@ -101,11 +102,16 @@ class _OneScreenState extends State<OneScreen> {
       final name = a.nameCtrl.text.trim();
       final value = a.valueCtrl.text.trim();
       if (name.isEmpty && value.isEmpty) continue;
-      if (name.isNotEmpty) {
-        final flag = name.startsWith('-') ? name : '--$name';
+      final flag = name.isNotEmpty
+          ? (name.startsWith('-') ? name : '--$name')
+          : null;
+
+      if (flag != null && value.isNotEmpty) {
+        // Combine into one token like --key=value
+        result.add('$flag=$value');
+      } else if (flag != null) {
         result.add(flag);
-      }
-      if (value.isNotEmpty) {
+      } else if (value.isNotEmpty) {
         result.add(value);
       }
     }
@@ -141,7 +147,27 @@ class _OneScreenState extends State<OneScreen> {
         _stdout = (res?['stdout'] ?? '').toString();
         _stderr = (res?['stderr'] ?? '').toString();
         _exitCode = res?['exitCode'] as int?;
+        _lastCommand = (res?['command'] ?? '').toString();
       });
+
+      if (mounted && (_lastCommand?.isNotEmpty ?? false)) {
+        showDialog(
+          context: context,
+          builder: (ctx) => AlertDialog(
+            title: const Text('Executed command'),
+            content: SelectableText(
+              _lastCommand!,
+              style: const TextStyle(fontFamily: 'monospace'),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(ctx).pop(),
+                child: const Text('OK'),
+              ),
+            ],
+          ),
+        );
+      }
     } on PlatformException catch (e) {
       setState(() {
         _isRunning = false;
@@ -167,7 +193,7 @@ class _OneScreenState extends State<OneScreen> {
     final mono = const TextStyle(fontFamily: 'monospace', fontSize: 13);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('binaryRunnerAndroid')),
+      appBar: AppBar(title: const Text('Binary Runner')),
       body: SafeArea(
         child: Column(
           children: [

@@ -1,6 +1,6 @@
 {
-    "name": "binaryrunner",
-    "short_name": "binaryrunner",
+    "name": "Binary Runner",
+    "short_name": "Binary Runner",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
