@@ -42,11 +42,14 @@ jobs:
       - name: Build release APK (arm64)
         run: flutter build apk --release --target-platform=android-arm64
 
+      - name: Rename APK for release
+        run: |
+          cp build/app/outputs/flutter-apk/app-release.apk binaryRunnerAndroid.apk
+
       - name: Upload APK to Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            build/app/outputs/flutter-apk/app-release.apk
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+            binaryRunnerAndroid.apk
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

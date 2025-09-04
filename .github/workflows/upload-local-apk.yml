@@ -10,7 +10,7 @@ permissions:
 jobs:
   upload:
     runs-on: ubuntu-latest
-    if: ${{ hashFiles('release-assets/app-release-local.apk') != '' }}
+    if: ${{ hashFiles('release-assets/binaryRunnerAndroid.apk') != '' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -20,7 +20,10 @@ jobs:
         with:
           tag_name: v1.0.0
           files: |
-            release-assets/app-release-local.apk
+            release-assets/binaryRunnerAndroid.apk
+          fail_on_unmatched_files: true
+          make_latest: true
+          append_body: false
+          
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
