@@ -83,7 +83,7 @@ class _OneScreenState extends State<OneScreen> {
   int? _exitCode;
   bool _useSu = false;
 
-  static const _channel = MethodChannel('com.example.profilertestapp/runner');
+  static const _channel = MethodChannel('com.example.binaryrunner/runner');
 
   @override
   void dispose() {
@@ -115,10 +115,10 @@ class _OneScreenState extends State<OneScreen> {
   Future<void> _run() async {
     final path = _pathCtrl.text.trim();
     final bin = _binCtrl.text.trim();
-    if (path.isEmpty || bin.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please fill path and binary name.')),
-      );
+    if (bin.isEmpty) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Please fill binary name.')));
       return;
     }
 
@@ -153,6 +153,12 @@ class _OneScreenState extends State<OneScreen> {
         _stderr = 'Unexpected error: $e';
       });
     }
+  }
+
+  Future<void> _stop() async {
+    try {
+      await _channel.invokeMethod('stopBinary');
+    } catch (_) {}
   }
 
   @override
@@ -341,20 +347,36 @@ class _OneScreenState extends State<OneScreen> {
       bottomNavigationBar: SafeArea(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(16, 10, 16, 16),
-          child: SizedBox(
-            height: 54,
-            child: FilledButton.icon(
-              style: FilledButton.styleFrom(
-                shape: const StadiumBorder(),
-                textStyle: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
+          child: Row(
+            children: [
+              Expanded(
+                child: SizedBox(
+                  height: 54,
+                  child: FilledButton.icon(
+                    style: FilledButton.styleFrom(
+                      shape: const StadiumBorder(),
+                      textStyle: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    onPressed: _isRunning ? null : _run,
+                    icon: const Icon(Icons.play_arrow),
+                    label: const Text('Run'),
+                  ),
                 ),
               ),
-              onPressed: _isRunning ? null : _run,
-              icon: const Icon(Icons.play_arrow),
-              label: const Text('Run'),
-            ),
+              const SizedBox(width: 12),
+              SizedBox(
+                height: 54,
+                child: OutlinedButton.icon(
+                  style: OutlinedButton.styleFrom(shape: const StadiumBorder()),
+                  onPressed: _isRunning ? _stop : null,
+                  icon: const Icon(Icons.stop),
+                  label: const Text('Stop'),
+                ),
+              ),
+            ],
           ),
         ),
       ),

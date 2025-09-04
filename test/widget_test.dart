@@ -8,7 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:profilertestapp/main.dart';
+import 'package:binaryrunner/main.dart';
 
 void main() {
   testWidgets('Binary Runner basic UI renders', (WidgetTester tester) async {
