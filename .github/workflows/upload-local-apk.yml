@@ -1,0 +1,26 @@
+name: Upload Local APK to Release
+
+on:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    if: ${{ hashFiles('release-assets/app-release-local.apk') != '' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Upload local APK to existing release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.0
+          files: |
+            release-assets/app-release-local.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
