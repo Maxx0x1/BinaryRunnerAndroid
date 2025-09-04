@@ -14,7 +14,7 @@ class OneScreenApp extends StatelessWidget {
       brightness: Brightness.light,
     );
     return MaterialApp(
-      title: 'Binary Runner',
+      title: 'binaryRunnerAndroid',
       debugShowCheckedModeBanner: false,
       home: const OneScreen(),
       theme: ThemeData(
@@ -167,7 +167,7 @@ class _OneScreenState extends State<OneScreen> {
     final mono = const TextStyle(fontFamily: 'monospace', fontSize: 13);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Binary Runner')),
+      appBar: AppBar(title: const Text('binaryRunnerAndroid')),
       body: SafeArea(
         child: Column(
           children: [
