@@ -29,7 +29,7 @@ jobs:
 
       - name: Install Android platforms and tools
         run: |
-          sdkmanager --install "platform-tools" "platforms;android-36" "build-tools;35.0.0"
+          sdkmanager --install "platform-tools" "platforms;android-35" "build-tools;35.0.0"
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
@@ -44,12 +44,20 @@ jobs:
 
       - name: Rename APK for release
         run: |
-          cp build/app/outputs/flutter-apk/app-release.apk binaryRunnerAndroid.apk
+          set -e
+          out_dir="build/app/outputs/flutter-apk"
+          if [ -f "$out_dir/app-release.apk" ]; then
+            cp "$out_dir/app-release.apk" binaryRunnerAndroid.apk
+          elif [ -f "$out_dir/app-arm64-v8a-release.apk" ]; then
+            cp "$out_dir/app-arm64-v8a-release.apk" binaryRunnerAndroid.apk
+          else
+            echo "APK not found in $out_dir" >&2
+            ls -la "$out_dir" || true
+            exit 1
+          fi
 
       - name: Upload APK to Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
             binaryRunnerAndroid.apk
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
